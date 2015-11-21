@@ -30,5 +30,11 @@ let find a w =
 let default_int =
   "Replace this string with your implementation." ;;
 
-let merge a b =
-  "Replace this string with your implementation." ;;
+let merge a b = match a,b with
+  |
+
+
+let a = 1
+;;
+
+  Some a;;

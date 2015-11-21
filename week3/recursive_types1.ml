@@ -28,15 +28,43 @@ of elements in the queue.
 
 type queue = int list * int list;;
 
+let test (a,b) (c t ,d) = true;;
 
-let is_empty (front, back) =
-  "Replace this string with your implementation." ;;
+let test (a,b) (c t ,d) = true;;
+
+
+let is_empty (front, back) = match (front,back) with
+  | ([],[]) -> false;;
+
 
 let enqueue x (front, back) =
   "Replace this string with your implementation." ;;
 
 let split l =
-  "Replace this string with your implementation." ;;
+  let rec aux n front back  = match back with
+    | [] -> (front, back)
+    | x :: xs -> if n = 0 then
+          (front, back)
+        else
+          aux (n-1) (x::front) xs
+  in
+  aux ((List.length l)/2) [] l;;
+
+split l;;
+
+
+let rec f n front = function
+  | [] -> (front, [])
+  | x :: xs as l -> if n = 0 then
+		 ( List.rev front, l)
+	       else
+		f (n-1) (x::front) xs;;
+
+let l = [1;2;3;4;5;6];;
+f ((List.length l)/2) [] l;;
+
+split [1;2;3;4]
+
 
 let dequeue (front, back) =
   "Replace this string with your implementation." ;;

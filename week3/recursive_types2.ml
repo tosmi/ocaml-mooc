@@ -28,8 +28,15 @@ let rec mem x l =
 let rec append l1 l2 =
   "Replace this string with your implementation." ;;
 
-let rec combine l1 l2 =
-  "Replace this string with your implementation." ;;
+let rec combine l1 l2 = match l1 with
+  | [] -> []
+  | x::xs -> match l2 with
+	     | [] -> []
+	     | y::ys -> (x,y)::(combine xs ys);;
+
+combine [1;2;3][4;5;6];;
+
+
 
 let rec assoc l k =
   "Replace this string with your implementation." ;;
