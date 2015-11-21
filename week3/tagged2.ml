@@ -27,15 +27,28 @@ index is expected (or the converse).
 
  *)
 
+let a1 = [| 1; 2; 3 |];;
 
+a1.(3);;
+
+let f a ( x: int) = x;;
 
 type index = Index of int;;
 
-let read a index =
-  "Replace this string with your implementation." ;;
+let read a (i : index)  = match i with
+  | Index i -> a.(i);;
 
-let inside a index =
-  "Replace this string with your implementation." ;;
+read a1 (Index 1);;
+
+let inside a (index : index) = match index with
+  | Index index ->
+     if index > 0 && index < ()Array.length a) - 1 then
+       true
+     else
+       false
+;;
+
+inside a1 (Index 3);;
 
 let next index =
   "Replace this string with your implementation." ;;

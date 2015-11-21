@@ -11,4 +11,5 @@ let lighter c1 c2 =
   | (_, White) -> true
   | (White, Gray) -> false
   | (Gray, Black) -> false
+  | (White, Black) -> false
 ;;
