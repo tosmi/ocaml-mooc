@@ -16,5 +16,19 @@ minimizes the total number of operations (multiplications, divisions
 and calls to cos).
  *)
 
-let ccr = fun a -> fun b -> fun c -> fun s ->
-  "Replace this string with your implementation." ;;
+let ccr =
+  function a ->
+	   (function b ->
+		     (function c ->
+			       (function s -> s/.(2.*.(cos(a/.2.)*.2.*.cos(b/.2.)*.2.*.cos(c/.2.))))))
+;;
+
+let f1 = function x -> (function y -> x - y);;
+
+  f1 1 2;;
+
+  let f2 x = f1 x;;
+
+  let f3 = f1 1;
+
+f3 2;;
