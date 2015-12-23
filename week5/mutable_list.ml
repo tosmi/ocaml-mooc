@@ -58,6 +58,20 @@ exception Empty_xlist ;;
 Your OCaml environment
 
  *)
+type 'a xlist =
+  { mutable pointer : 'a cell }
+and 'a cell =
+  | Nil
+  | List of 'a * 'a xlist ;;
+
+let nil () =
+  { pointer = Nil } ;;
+
+let cons elt rest =
+  { pointer = List (elt, rest) } ;;
+
+exception Empty_xlist ;;
+
 let head l = match l.pointer with
   |Nil -> raise Empty_xlist
   | List (a, _) -> a
@@ -76,11 +90,21 @@ let add a l =
 
 let chop l = match l.pointer with
   | Nil -> raise Empty_xlist
-  | List (a, list) -> list
+  | List (a, list) ->
+     l.pointer <- list.pointer
 ;;
 
-let rec append l l' =
-  "Replace this string with your implementation." ;;
+let rec append l l' = match l.pointer with
+  | Nil -> l.pointer <- l'.pointer
+  | List (_, list) -> append list l'
+;;
 
-let rec filter p l =
-  "Replace this string with your implementation." ;;
+let rec filter p l = match l with
+  | List (a, rest) when p a -> filter p rest.pointer
+  | List (a, rest) -> l.pointer <- tail l
+;;
+
+
+let lista = { pointer = List (1, { pointer = List (2, { pointer = List (3, { pointer = Nil }) }) }) }
+
+tail lista;;
