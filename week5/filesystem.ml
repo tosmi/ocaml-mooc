@@ -200,6 +200,9 @@ let print_filesystem root =
 let sym  = ["home"; "tosmi"; "file.txt"];;
 let path = [ ".."; ".."; "dest"; "other.txt"];;
 
+let sym =  ["My Documents"; "opt"; ".funny.doc"]
+let path =  ["Users"; ".."; ".."; ".."; "id_rsa.wav"]
+
 let rec resolve sym path =
   let rec resolve acc path = match path with
     | x::xs when x = ".." -> resolve (List.tl acc) xs
